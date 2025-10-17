@@ -1,0 +1,119 @@
+.container {
+  height: 100vh;
+  background: #e9e6ee;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-view {
+  flex: 1;
+  height: 0;
+}
+
+.card-list {
+  padding: 0 5rpx;
+  padding-bottom: 200rpx;
+}
+
+.card {
+  height: 120rpx;
+  margin-bottom: 20rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.card:active {
+  background-color: rgb(220, 217, 228);
+}
+
+.Num {
+  color: #CFCFCF;
+  font-size: 36rpx;
+  font-weight: bold;
+  width: 80rpx; /* 增加宽度确保两位数也能对齐 */
+  text-align: center; /* 改为居中对齐 */
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums; /* 等宽数字 */
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20rpx;
+  min-width: 0; /* 重要：防止flex布局溢出 */
+}
+
+.name {
+  color: #616161;
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 8rpx;
+  /* 超出显示省略号 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.author {
+  color: #888888;
+  font-size: 24rpx;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.load-more-text {
+  text-align: center;
+  padding: 30rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 搜索栏样式 */
+.search-bar {
+  padding: 20rpx 30rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-input {
+  flex: 1;
+  height: 80rpx;
+  background: #e0dde6;
+  border-radius: 40rpx;
+  padding: 0 60rpx 0 30rpx;
+  font-size: 28rpx;
+  border: 1px solid #E0E0E0;
+}
+
+.search-clear {
+  position: absolute;
+  right: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-icon {
+  font-size: 40rpx;
+  color: #C7C7C7;
+  line-height: 1;
+}
+
+.empty-tips {
+  text-align: center;
+  padding: 100rpx 30rpx;
+  color: #999;
+  font-size: 28rpx;
+}

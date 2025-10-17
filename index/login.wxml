@@ -1,0 +1,22 @@
+<!--index/login.wxml-->
+<view class="container">
+  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+    <image class="avatar" src="{{avatarUrl}}"></image>
+  </button>
+  <view class="form-container">
+    <view class="cells-group">
+      <view class="cell">
+        <view class="cell-content">
+          <input 
+            type="nickname" 
+            class="nickname-input" 
+            placeholder="请输入昵称"
+            value="{{nickname}}"
+            bindinput="onNicknameInput"
+          />
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="LoginBox" bind:tap="TapLogin">Register</button>
+</view>

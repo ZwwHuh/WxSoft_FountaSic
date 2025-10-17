@@ -1,0 +1,35 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <input 
+      class="search-input" 
+      placeholder="搜索音乐..." 
+      value="{{searchText}}"
+      bindinput="onSearchInput"
+    />
+    <view class="search-clear" wx:if="{{searchText}}" bindtap="onClearSearch">
+      <text class="clear-icon">×</text>
+    </view>
+  </view>
+  
+  <!-- 垂直滚动容器 -->
+  <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="onReachBottom" upper-threshold="100">
+    <view class="card-list">
+      <view class="card" wx:for="{{displayList}}" wx:key="id" bindtap="onCardTap" data-id="{{item.id}}" data-name="{{item.name}}" data-author="{{item.author}}" data-duration="{{item.duration}}">
+        <text class="Num">{{item.id}}</text>
+        <view class="content">
+          <text class="name">{{item.name}}</text>
+          <text class="author">{{item.author}}</text>
+        </view>
+      </view>
+      
+      <!-- 空状态提示 -->
+      <view wx:if="{{displayList.length === 0 && searchText}}" class="empty-tips">
+        <text>没有找到"{{searchText}}"相关的音乐</text>
+      </view>
+      
+      <!-- 加载更多提示 -->
+      <view wx:if="{{!searchText && !hasMore && displayList.length > 0}}" class="load-more-text">没有更多了</view>
+    </view>
+  </scroll-view>
+</view>

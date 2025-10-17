@@ -1,0 +1,8 @@
+.top-space {
+  height: 20rpx;
+  flex-shrink: 0;
+}
+/* 在页面的 .wxss 文件中 */
+page {
+  background-color: #e9e6ee;
+}

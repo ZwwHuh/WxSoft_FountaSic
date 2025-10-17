@@ -1,0 +1,16 @@
+<view class="container">
+  <!-- 用户信息头部 -->
+  <view class="user-section">
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <text class="nickname">{{userInfo.nickName || '未设置昵称'}}</text>
+    </view>
+  </view>
+
+  <!-- 内容列表 -->
+  <view class="list">
+    <view class="item" wx:for="{{menuList}}" wx:key="id">
+      <text class="item-title">{{item.title}}</text>
+    </view>
+  </view>
+</view>

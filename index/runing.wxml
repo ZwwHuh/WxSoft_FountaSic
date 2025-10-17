@@ -1,0 +1,40 @@
+<!--index/running.wxml-->
+<view class="container">
+  <!-- 音乐信息 -->
+  <view class="music-info">
+    <text class="music-name">{{MusicName}}</text>
+    <text class="music-author">{{MusicAuthor}}</text>
+  </view>
+
+  <!-- 进度条 -->
+  <view class="progress-section">
+    <text class="progress-time">{{currentTime}}s / {{totalTime}}s</text>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%;"></view>
+    </view>
+  </view>
+
+
+
+  <!-- 音量控制 -->
+  <view class="volume-section">
+    <view class="volume-controls">
+      <button class="volume-btn" bindtap="decreaseVolume">-</button>
+      <view class="volume-bar">
+        <view class="volume-fill" style="width:{{MusicVolume*100/30}}%;"></view>
+      </view>
+      <button class="volume-btn" bindtap="increaseVolume">+</button>
+    </view>
+  </view>
+
+  <!-- 控制按钮 -->
+  <view class="control-section">
+    <button class="control-btn play-btn" bindtap="togglePlayState">
+      <image class="play-icon" src="{{MusicState === 1 ? '/image/pause1.png' : '/image/play1.png'}}" mode="aspectFit"></image>
+    </button>
+  </view>
+  <!-- 音乐ID显示 -->
+  <view class="id-section">
+    <text class="id-text">音乐ID: {{MusicId}}</text>
+  </view>
+</view>

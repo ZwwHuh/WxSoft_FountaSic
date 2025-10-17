@@ -1,0 +1,63 @@
+/* index/login.wxss */
+.container {
+  height: 100vh;
+  background-color: #efecf3;
+  padding: 100rpx 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 头像区域 - 修复白色边框问题 */
+.avatar-wrapper {
+  padding: 0;
+  margin-bottom: 60rpx;
+  border-radius: 40rpx; /* 与头像圆角保持一致 */
+}
+
+.avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 40rpx;
+  border: 4rpx solid #fff7f7;
+  display: block; /* 确保图片正确显示 */
+}
+
+/* 表单区域 */
+.form-container {
+  width: 80%;
+  background: #e6dbe4;
+  border-radius: 16rpx;
+  margin-bottom: 50rpx;
+  overflow: hidden;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+}
+
+.nickname-input {
+  width: 100%;
+  font-size: 30rpx;
+  color: #333333;
+  border: none;
+  outline: none;
+}
+
+.nickname-input::placeholder {
+  color: #999999;
+}
+
+.LoginBox {
+  width: 50%;
+  background: #667eea;
+  color: #ffffff;
+  border: none;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 30rpx;
+}

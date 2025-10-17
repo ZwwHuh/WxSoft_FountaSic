@@ -1,0 +1,63 @@
+.container {
+  min-height: 100vh;
+  padding: 30rpx;
+}
+
+/* 用户信息区域 */
+.user-section {
+  background-color: #5e5858;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  margin-right: 30rpx;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8rpx;
+}
+.item {
+  background: #f9f6ff;
+  border-radius: 20rpx;
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.item:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.item-title {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: 500;
+}
+page {
+  overflow: hidden;
+  height: 100vh;
+}
