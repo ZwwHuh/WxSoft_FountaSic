@@ -1,9 +1,10 @@
+const config=require('./utils/config.js');
 App({
   globalData: {
     avatarUrl: '',
     nickname: '',
     openid: '',
-    apiBaseUrl: "https://ingrid-unencroached-unhumanly.ngrok-free.dev"
+    apiBaseUrl: config.DatabaseConfig.base_url
   },
 
   onLaunch() {

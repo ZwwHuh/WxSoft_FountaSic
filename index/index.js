@@ -19,7 +19,6 @@ Component({
     currentPage: 0,
     hasMore: true,
     searchText: '',
-    apiBaseUrl: 'https://ingrid-unencroached-unhumanly.ngrok-free.dev'
   },
 
   lifetimes: {
@@ -104,8 +103,9 @@ Component({
 
     addFavorite(openid, music_id, music_name, music_author) {
       const that = this;
+      const config=require('../utils/config.js');
       wx.request({
-        url: `${that.data.apiBaseUrl}/api/add_favorite`,
+        url: `${config.DatabaseConfig.base_url}/api/add_favorite`,
         method: 'POST',
         header: { 'Content-Type': 'application/json' },
         data: { openid, music_id, music_name, music_author },
@@ -126,8 +126,9 @@ Component({
 
     removeFavorite(openid, music_id) {
       const that = this;
+      const config=require('../utils/config.js');
       wx.request({
-        url: `${that.data.apiBaseUrl}/api/remove_favorite`,
+        url: `${config.DatabaseConfig.base_url}/api/remove_favorite`,
         method: 'POST',
         header: { 'Content-Type': 'application/json' },
         data: { openid, music_id },
@@ -162,8 +163,9 @@ markFavs() {
   if (!openid) return;
   
   const that = this;
+  const config=require('../utils/config.js');
   // ✅ 确保使用正确的 GET 请求方式
-  const requestUrl = `${that.data.apiBaseUrl}/api/get_favorites?openid=${encodeURIComponent(openid)}`;
+  const requestUrl = `${config.DatabaseConfig.base_url}/api/get_favorites?openid=${encodeURIComponent(openid)}`;
   
   wx.request({
     url: requestUrl,

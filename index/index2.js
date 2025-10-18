@@ -3,7 +3,6 @@ Component({
   data: {
     mode: 'single',
     rankList: [],
-    apiBaseUrl: 'https://ingrid-unencroached-unhumanly.ngrok-free.dev',
     userRank: null,
     userScore: null
   },
@@ -26,7 +25,8 @@ Component({
 
     loadRankData() {
       const mode = this.data.mode;
-      const url = `${this.data.apiBaseUrl}/api/get_rank?mode=${mode}`;
+      const config=require('../utils/config.js');
+      const url = `${config.DatabaseConfig.base_url}/api/get_rank?mode=${mode}`;
 
       wx.request({
         url,
@@ -75,14 +75,14 @@ Component({
       const openid = wx.getStorageSync('openid');
       const nickname = wx.getStorageSync('nickname') || '匿名用户';
       const avatarUrl = wx.getStorageSync('avatarUrl') || '';
-      
+      const config=require('../utils/config.js');
       if (!openid) {
         console.log('用户未登录，无法上传成绩');
         return;
       }
 
       wx.request({
-        url: `${app.globalData.apiBaseUrl}/api/get_rankings`,
+        url: `${config.DatabaseConfig.base_url}/api/get_rankings`,
         method: 'POST',
         data: {
           openid: openid,

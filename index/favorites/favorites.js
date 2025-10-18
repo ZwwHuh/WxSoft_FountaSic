@@ -1,6 +1,5 @@
 Page({
   data: {
-    apiBaseUrl: 'https://ingrid-unencroached-unhumanly.ngrok-free.dev',
     favoriteList: [],
     openid: '',
     isLoading: true,
