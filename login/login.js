@@ -92,9 +92,9 @@ Page({
   sendCodeToServer: function(code, registerType) {
     const that = this;
     console.log(`发送code到服务器, registerType: ${registerType}, code:`, code);
-
+    const config=require('../utils/config.js');
     wx.request({
-      url: 'https://ingrid-unencroached-unhumanly.ngrok-free.dev/api/login',
+      url: config.DatabaseConfig.login_url,
       method: 'POST',
       data: {
         code: code,
@@ -107,18 +107,14 @@ Page({
       },
       success: (res) => {
         console.log("服务器响应:", res.data);
-
         wx.hideLoading();
-
         if (res.data.status === 'success' && res.data.existUser === 1) {
           const openid = res.data.openid;
           const avatarUrl = res.data.avatar_url || that.data.avatarUrl;
           const nickname = res.data.nickname || that.data.nickname;
-
           wx.setStorageSync('openid', openid);
           wx.setStorageSync('avatarUrl', avatarUrl);
           wx.setStorageSync('nickname', nickname);
-
           // 更新全局数据
           getApp().globalData.openid = openid;
           getApp().globalData.avatarUrl = avatarUrl;

@@ -1,9 +1,10 @@
 {
   "pages": [
+    "login/login",
     "index/index",
     "index/index2",
     "index/index3",
-    "login/login",
+
     "runing/runing",
     "index/mode/mode",
     "index/favorites/favorites",

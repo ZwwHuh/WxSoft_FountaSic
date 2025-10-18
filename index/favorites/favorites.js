@@ -44,7 +44,8 @@ Page({
     });
 
     // ✅ 使用 GET 请求，openid 作为查询参数
-    const requestUrl = `${this.data.apiBaseUrl}/api/get_favorites?openid=${encodeURIComponent(openid)}`;
+    const config=require('../../utils/config.js');
+    const requestUrl = `${config.DatabaseConfig.base_url}/api/get_favorites?openid=${encodeURIComponent(openid)}`;
     console.log('🎵 请求URL:', requestUrl);
 
     wx.request({
@@ -92,14 +93,14 @@ Page({
   onRemoveFavorite(e) {
     const music = e.currentTarget.dataset.music;
     const that = this;
-
+    const config=require('../../utils/config.js');
     wx.showModal({
       title: '取消收藏',
       content: `确定取消收藏 "${music.music_name}" 吗？`,
       success: (res) => {
         if (res.confirm) {
           wx.request({
-            url: `${that.data.apiBaseUrl}/api/remove_favorite`,
+            url: `${config.DatabaseConfig.base_url}/api/remove_favorite`,
             method: 'POST',
             header: { 'Content-Type': 'application/json' },
             data: {

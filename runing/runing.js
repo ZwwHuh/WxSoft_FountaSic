@@ -9,7 +9,6 @@ Page({
     currentTime: 0,
     progressPercent: 0,
     timer: null,
-    apiBaseUrl: 'https://ingrid-unencroached-unhumanly.ngrok-free.dev',
     currentTimeText: '00:00',
     totalTimeText: '00:00',
     selectedMode: 'single'
@@ -100,14 +99,14 @@ Page({
     const openid = wx.getStorageSync('openid');
     const nickname = wx.getStorageSync('nickname') || '匿名用户';
     const avatarUrl = wx.getStorageSync('avatarUrl') || '';
-    
+    const config=require('../utils/config.js');
     if (!openid) {
       console.log('用户未登录，无法上传成绩');
       return;
     }
 
     wx.request({
-      url: `${this.data.apiBaseUrl}/api/upload_rank`,
+      url: `${config.DatabaseConfig.base_url}/api/upload_rank`,
       method: 'POST',
       data: {
         openid: openid,
@@ -233,10 +232,7 @@ Page({
   },
 
   sendDeviceCommand() {
-    const product_id = "8d6MUdSNVV";
-    const device_name = "Music";
-    const token = "version=2018-10-31&res=products%2F8d6MUdSNVV%2Fdevices%2FMusic&et=1837255523&method=md5&sign=PRaKEv5TNXrGaLV5oOg6Rw%3D%3D";
-    
+    const config=require('../utils/config.js');
     console.log('发送设备命令:', {
       Song: this.data.MusicId,
       Volume: this.data.MusicVolume,
@@ -244,11 +240,11 @@ Page({
     });
     
     wx.request({
-      url: 'https://iot-api.heclouds.com/thingmodel/set-device-property',
+      url: config.OnenetConfig.set_url,
       method: 'POST',
       data: {
-        "product_id": product_id,
-        "device_name": device_name,
+        "product_id": config.OnenetConfig.product_id,
+        "device_name": config.OnenetConfig.device_name,
         "params": {
           "Song": `${this.data.MusicId}`.padStart(3, '0'),
           "Volume": `${this.data.MusicVolume}`.padStart(2, '0'),
@@ -257,7 +253,7 @@ Page({
       },
       header: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        'Authorization': config.OnenetConfig.token
       },
       success: (res) => {
         console.log("设备控制请求成功:", res.data);
