@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask 服务器运行正常！</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(to right, #a8d8ff, #7bc6ff);
+            color: #2c3e50;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 5px solid #66b3ff;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .server-status {
+            display: inline-block;
+            background-color: #66b3ff;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 主体内容样式 */
+        .content {
+            padding: 30px;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #66b3ff;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+            font-size: 1.8rem;
+        }
+        
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .api-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #66b3ff;
+        }
+        
+        .api-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .api-method {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .get { background-color: #66b3ff; }
+        .post { background-color: #3399ff; }
+        .delete { background-color: #ff6666; }
+        
+        .api-path {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .api-desc {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .api-params {
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        .api-params h4 {
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .param-list {
+            list-style-type: none;
+        }
+        
+        .param-list li {
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .param-list li:before {
+            content: "•";
+            color: #66b3ff;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #a8d8ff;
+            color: #2c3e50;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .api-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>(^▽^) Flask 音乐服务器</h1>
+            <p class="subtitle">微信小程序后端服务</p>
+            <div class="server-status">(●'◡'●) 服务器运行正常</div>
+        </header>
+        
+        <div class="content">
+            <h2 class="section-title">(≧∇≦)ﾉ 用户管理接口</h2>
+            <div class="api-grid">
+                <div class="api-card">
+                    <span class="api-method post">POST</span>
+                    <div class="api-path">/api/login</div>
+                    <div class="api-desc">微信小程序用户登录与注册</div>
+                    <div class="api-params">
+                        <h4>请求参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>code</strong> - 微信登录凭证</li>
+                            <li><strong>register</strong> - 操作类型 (0=自检, 1=注册)</li>
+                            <li><strong>nickname</strong> - 用户昵称 (注册时传)</li>
+                            <li><strong>avatarUrl</strong> - 用户头像URL (注册时传)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-method get">GET</span>
+                    <div class="api-path">/api/user/&lt;openid&gt;</div>
+                    <div class="api-desc">根据openid查询单个用户信息</div>
+                    <div class="api-params">
+                        <h4>URL参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>openid</strong> - 用户唯一标识符</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-method get">GET</span>
+                    <div class="api-path">/api/users</div>
+                    <div class="api-desc">查询数据库中所有注册用户</div>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-method delete">DELETE</span>
+                    <div class="api-path">/api/delete_user/&lt;user_id&gt;</div>
+                    <div class="api-desc">根据用户id删除用户</div>
+                    <div class="api-params">
+                        <h4>URL参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>user_id</strong> - 用户数据库ID</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">(｡♥‿♥｡) 收藏功能接口</h2>
+            <div class="api-grid">
+                <div class="api-card">
+                    <span class="api-method get">GET</span>
+                    <div class="api-path">/api/get_favorites</div>
+                    <div class="api-desc">获取用户收藏列表</div>
+                    <div class="api-params">
+                        <h4>查询参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>openid</strong> - 用户唯一标识符</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-method post">POST</span>
+                    <div class="api-path">/api/add_favorite</div>
+                    <div class="api-desc">添加音乐收藏</div>
+                    <div class="api-params">
+                        <h4>请求参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>openid</strong> - 用户唯一标识符</li>
+                            <li><strong>music_id</strong> - 音乐ID</li>
+                            <li><strong>music_name</strong> - 音乐名称</li>
+                            <li><strong>music_author</strong> - 音乐作者 (可选)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-method post">POST</span>
+                    <div class="api-path">/api/remove_favorite</div>
+                    <div class="api-desc">取消音乐收藏</div>
+                    <div class="api-params">
+                        <h4>请求参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>openid</strong> - 用户唯一标识符</li>
+                            <li><strong>music_id</strong> - 音乐ID</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">(ง •_•)ง 排行榜接口</h2>
+            <div class="api-grid">
+                <div class="api-card">
+                    <span class="api-method get">GET</span>
+                    <div class="api-path">/api/get_rank</div>
+                    <div class="api-desc">获取游戏排行榜</div>
+                    <div class="api-params">
+                        <h4>查询参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>mode</strong> - 游戏模式 (默认: single)</li>
+                            <li><strong>limit</strong> - 返回数量 (默认: 50)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="api-card">
+                    <span class="api-method post">POST</span>
+                    <div class="api-path">/api/upload_rank</div>
+                    <div class="api-desc">上传游戏成绩到排行榜</div>
+                    <div class="api-params">
+                        <h4>请求参数:</h4>
+                        <ul class="param-list">
+                            <li><strong>openid</strong> - 用户唯一标识符</li>
+                            <li><strong>nickname</strong> - 用户昵称</li>
+                            <li><strong>avatar_url</strong> - 用户头像URL</li>
+                            <li><strong>mode</strong> - 游戏模式</li>
+                            <li><strong>score</strong> - 游戏分数</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">(•̀ᴗ•́)و 系统接口</h2>
+            <div class="api-grid">
+                <div class="api-card">
+                    <span class="api-method get">GET</span>
+                    <div class="api-path">/api/health</div>
+                    <div class="api-desc">服务器健康状态检查</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p class="footer-text">Flask 音乐服务器 &copy; 2025 | 测试页面</p>
+            <p class="footer-text">服务器时间: <span id="server-time">正在加载...</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // 显示当前服务器时间
+        function updateServerTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('server-time').textContent = timeString;
+        }
+        
+        // 页面加载时更新时间
+        updateServerTime();
+        setInterval(updateServerTime, 1000);
+        
+        // 添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiCards = document.querySelectorAll('.api-card');
+            
+            apiCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.borderLeftColor = '#ff9966';
+                    setTimeout(() => {
+                        this.style.borderLeftColor = '#66b3ff';
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

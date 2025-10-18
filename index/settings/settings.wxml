@@ -1,0 +1,22 @@
+<view class="settings-container">
+  <view class="settings-header">
+    <text class="header-title">设置</text>
+  </view>
+
+  <view class="settings-list">
+    <view class="setting-item logout-item" bindtap="onLogout">
+      <text class="setting-text">退出登录</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="setting-item">
+      <text class="setting-text">关于我们</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="setting-item">
+      <text class="setting-text">版本信息</text>
+      <text class="version">v1.0.0</text>
+    </view>
+  </view>
+</view>

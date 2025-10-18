@@ -1,0 +1,48 @@
+<view class="playing-container">
+  <view class="music-info">
+    <image class="album-cover" src="/image/default_album.png"></image>
+    <text class="music-name">{{MusicName}}</text>
+    <text class="music-author">{{MusicAuthor}}</text>
+  </view>
+
+  <view class="progress-section">
+    <view class="progress-bar">
+      <view class="progress-inner" style="width: {{progressPercent}};"></view>
+      </view>
+    </view>
+    <view class="time-info">
+      <text class="current-time">{{currentTimeText}}</text>
+      <text class="total-time">{{totalTimeText}}</text>
+    </view>
+  </view>
+
+  <view class="control-section">
+    <view class="volume-control">
+      <view class="volume-btn" bindtap="decreaseVolume">
+        <text class="volume-icon">−</text>
+      </view>
+      <text class="volume-text">音量: {{MusicVolume}}</text>
+      <view class="volume-btn" bindtap="increaseVolume">
+        <text class="volume-icon">+</text>
+      </view>
+    </view>
+
+    <view class="play-control">
+      <view class="control-btn prev-btn">
+        <text class="control-icon">⏮</text>
+      </view>
+      <view class="play-btn {{MusicState === 1 ? 'playing' : ''}}" bindtap="togglePlayState">
+        <text class="play-icon">{{MusicState === 1 ? '❚❚' : '▶'}}</text>
+      </view>
+      <view class="control-btn next-btn">
+        <text class="control-icon">⏭</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="mode-info">
+  <text class="mode-text">当前模式: 
+    <block wx:if="{{selectedMode === 'single'}}">单人模式</block>
+    <block wx:else>双人模式</block>
+  </text>
+</view>

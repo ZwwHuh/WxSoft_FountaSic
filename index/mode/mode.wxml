@@ -1,0 +1,20 @@
+<view class="mode-container">
+  <view class="mode-header">
+    <text class="mode-title">选择游戏模式</text>
+    <text class="mode-subtitle">请选择您要游玩的模式</text>
+  </view>
+
+  <view class="mode-list">
+    <view class="mode-item single-mode" bindtap="chooseMode" data-mode="single">
+      <image class="mode-icon" src="/image/icon_single.png"></image>
+      <text class="mode-name">单人模式</text>
+      <text class="mode-desc">独自享受音乐的魅力</text>
+    </view>
+
+    <view class="mode-item double-mode" bindtap="chooseMode" data-mode="double">
+      <image class="mode-icon" src="/image/icon_double.png"></image>
+      <text class="mode-name">双人模式</text>
+      <text class="mode-desc">与朋友一起竞技</text>
+    </view>
+  </view>
+</view>

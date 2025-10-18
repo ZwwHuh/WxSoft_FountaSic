@@ -1,0 +1,143 @@
+.rank-container {
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+.header {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.header-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.mode-switch {
+  display: flex;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 8rpx;
+  margin: 20rpx 0;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.switch-btn {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #7f8c8d;
+  transition: all 0.3s;
+}
+
+.switch-btn.active {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.user-status {
+  background: linear-gradient(90deg, #ffecd2, #fcb69f);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin: 20rpx 0;
+  text-align: center;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.status-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #d35400;
+}
+
+.rank-list {
+  height: calc(100vh - 400rpx);
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.rank-num {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #6c757d;
+  margin-right: 30rpx;
+}
+
+.rank-num.top-1 {
+  background: linear-gradient(135deg, #ffd700, #ffec8b);
+  color: #b8860b;
+}
+
+.rank-num.top-2 {
+  background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+  color: #696969;
+}
+
+.rank-num.top-3 {
+  background: linear-gradient(135deg, #cd7f32, #e0a04d);
+  color: #8b4513;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+
+.rank-info {
+  flex: 1;
+}
+
+.nick {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 8rpx;
+}
+
+.score {
+  font-size: 28rpx;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 40rpx;
+}
+
+.empty image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.5;
+}
+
+.empty text {
+  font-size: 28rpx;
+  color: #95a5a6;
+}

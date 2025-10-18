@@ -1,0 +1,36 @@
+<view class="login-container">
+  <view class="login-header">
+    <text class="login-title">Fountasic</text>
+    <text class="login-subtitle">开启你的音乐之旅</text>
+  </view>
+
+  <view class="avatar-section">
+    <view class="avatar-wrapper">
+      <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
+      </button>
+      <text class="avatar-tip">点击设置头像</text>
+    </view>
+  </view>
+
+  <view class="form-section">
+    <view class="input-group">
+      <text class="input-label">昵称</text>
+      <input 
+        class="nickname-input" 
+        type="nickname" 
+        placeholder="请输入昵称" 
+        value="{{nickname}}" 
+        bindinput="onNicknameInput"
+      />
+    </view>
+
+    <button class="login-btn" bindtap="TapLogin">
+      <text class="btn-text">登录 / 注册</text>
+    </button>
+
+    <view class="login-tips">
+      <text>登录即代表同意用户协议和隐私政策</text>
+    </view>
+  </view>
+</view>

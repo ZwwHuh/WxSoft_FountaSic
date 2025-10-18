@@ -1,0 +1,65 @@
+<view class="index-container">
+  <!-- 搜索框 -->
+  <view class="search-section">
+    <view class="search-bar">
+      <image class="search-icon" src="/image/icon_search.png"></image>
+      <input 
+        class="search-input" 
+        placeholder="搜索歌曲" 
+        value="{{searchText}}" 
+        bindinput="onSearchInput"
+      />
+      <view class="search-clear" wx:if="{{searchText}}" bindtap="onClearSearch">
+        <image src="/image/icon_clear.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- 歌曲列表 -->
+  <scroll-view 
+    class="music-list" 
+    scroll-y="true" 
+    bindscrolltolower="onReachBottom"
+  >
+    <view class="music-grid">
+      <view 
+        class="music-card" 
+        wx:for="{{displayList}}" 
+        wx:key="id" 
+        bindtap="onCardTap"
+        data-id="{{item.id}}"
+        data-name="{{item.name}}"
+        data-author="{{item.author}}"
+        data-duration="{{item.duration}}"
+      >
+        <view class="card-header">
+          <text class="music-name">{{item.name}}</text>
+          <!-- 修改这里：使用 catchtap 阻止事件冒泡 -->
+          <view class="fav-btn {{item._fav ? 'active' : ''}}" catchtap="onFavTap" data-id="{{item.id}}" data-name="{{item.name}}" data-author="{{item.author}}">
+            <image src="{{item._fav ? '/image/heart_full.png' : '/image/heart_empty.png'}}"></image>
+          </view>
+        </view>
+        <view class="card-body">
+          <text class="music-author">{{item.author}}</text>
+          <text class="music-duration">{{item.duration}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{hasMore}}">
+      <text>加载中...</text>
+    </view>
+
+    <!-- 没有更多了 -->
+    <view class="no-more" wx:if="{{!hasMore && displayList.length > 0}}">
+      <text>没有更多歌曲了</text>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{displayList.length === 0}}">
+      <image src="/image/icon_empty.png"></image>
+      <text>暂无歌曲</text>
+    </view>
+  </scroll-view>
+</view>

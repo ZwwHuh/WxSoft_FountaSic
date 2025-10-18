@@ -1,0 +1,59 @@
+.settings-container {
+  min-height: 100vh;
+  background: #f6fbff;
+  padding: 20rpx;
+}
+
+.settings-header {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.header-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.settings-list {
+  background: #ffffff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: all 0.3s;
+}
+
+.setting-item:active {
+  background: #f8f9fa;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-text {
+  font-size: 32rpx;
+  color: #2c3e50;
+}
+
+.logout-item .setting-text {
+  color: #e74c3c;
+}
+
+.arrow {
+  font-size: 32rpx;
+  color: #bdc3c7;
+}
+
+.version {
+  font-size: 28rpx;
+  color: #95a5a6;
+}

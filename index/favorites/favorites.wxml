@@ -1,0 +1,53 @@
+<!-- index/favorites/favorites.wxml -->
+<view class="favorites-container">
+  <view class="favorites-header">
+    <text class="header-title">我的收藏</text>
+    <text class="header-subtitle">共{{favoriteList.length}}首收藏</text>
+    <view class="refresh-btn" bindtap="onRefresh">
+      <text>刷新</text>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{isLoading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 错误状态 -->
+  <view class="error-state" wx:elif="{{hasError}}">
+    <text class="error-icon">😢</text>
+    <text class="error-text">{{errorMsg}}</text>
+    <view class="retry-btn" bindtap="onRetry">
+      <text>重试</text>
+    </view>
+  </view>
+
+  <!-- 正常状态 -->
+  <scroll-view class="favorites-list" scroll-y="true" wx:else>
+    <view 
+      class="favorite-item" 
+      wx:for="{{favoriteList}}" 
+      wx:key="music_id"
+      bindtap="playMusic"
+      data-song="{{item}}"
+    >
+      <view class="music-info">
+        <text class="music-name">{{item.music_name}}</text>
+        <text class="music-author">{{item.music_author || '未知作者'}}</text>
+        <text class="add-time">{{item.add_time || '未知时间'}}</text>
+      </view>
+      <view class="action-buttons">
+        <view class="remove-btn" catchtap="onRemoveFavorite" data-music="{{item}}">
+          <text>取消收藏</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{favoriteList.length === 0}}">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">暂无收藏歌曲</text>
+      <text class="empty-tip">去选歌页面收藏你喜欢的歌曲吧</text>
+    </view>
+  </scroll-view>
+</view>

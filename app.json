@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "index/index",
+    "index/index2",
+    "index/index3",
+    "login/login",
+    "runing/runing",
+    "index/mode/mode",
+    "index/favorites/favorites",
+    "index/settings/settings"
+  ],
+
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "Fountasic",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6fbff"
+  },
+
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "index/index",
+        "iconPath": "image/icon_choise.png",
+        "selectedIconPath": "image/icon_choise_HL.png",
+        "text": "选歌"
+      },
+      {
+        "pagePath": "index/index2",
+        "iconPath": "image/icon_home.png",
+        "selectedIconPath": "image/icon_home_HL.png",
+        "text": "排行榜"
+      },
+      {
+        "pagePath": "index/favorites/favorites",
+        "iconPath": "image/tab_fav.png",
+        "selectedIconPath": "image/tab_fav_active.png",
+        "text": "收藏"
+      },
+      {
+        "pagePath": "index/index3",
+        "iconPath": "image/icon_user.png",
+        "selectedIconPath": "image/icon_user_HL.png",
+        "text": "用户"
+      }
+    ]
+  },
+
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

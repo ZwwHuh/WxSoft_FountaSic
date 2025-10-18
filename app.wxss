@@ -1,0 +1,85 @@
+/* 全局样式 */
+page {
+  background: linear-gradient(180deg, #f6fbff 0%, #eaf4ff 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+}
+
+/* 通用卡片样式 */
+.card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 通用按钮样式 */
+.btn-primary {
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  border-radius: 50rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(79, 172, 254, 0.3);
+  text-align: center;
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #6c757d;
+  border-radius: 50rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  border: 1rpx solid #e9ecef;
+  text-align: center;
+}
+
+/* 输入框样式 */
+.input {
+  background: #ffffff;
+  border: 2rpx solid #e9ecef;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.input:focus {
+  border-color: #4facfe;
+}
+
+/* 标题样式 */
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 30rpx 0 20rpx;
+  padding-left: 20rpx;
+  border-left: 8rpx solid #4facfe;
+}
+
+/* 空状态样式 */
+.empty-state {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  color: #6c757d;
+}
+
+.empty-state image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.5;
+}
